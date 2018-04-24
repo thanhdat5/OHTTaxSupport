@@ -109,10 +109,10 @@ namespace OHTTaxSupportApplication.Data.Infrastructure
                 var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
-                return query.Where<T>(predicate).AsQueryable<T>();
+                return query.Where<T>(predicate).ToList<T>();
             }
 
-            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+            return dataContext.Set<T>().Where<T>(predicate).ToList<T>();
         }
 
         public virtual IEnumerable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 20, string[] includes = null)

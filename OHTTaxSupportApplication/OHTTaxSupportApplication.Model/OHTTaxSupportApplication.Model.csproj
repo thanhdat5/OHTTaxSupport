@@ -81,6 +81,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ApiResponseViewModel.cs" />
+    <Compile Include="ViewModels\PaginationSet.cs" />
+    <Compile Include="ViewModels\TaxValueViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
-using System.Web.Routing;
-using OHTTaxSupportApplication.Web.Mappings;
+using System.Web.Routing;               
 
 namespace OHTTaxSupportApplication.Web
 {
@@ -15,8 +14,7 @@ namespace OHTTaxSupportApplication.Web
         protected void Application_Start()
         {           
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            AutoMapperConfiguration.Configure();
+            GlobalConfiguration.Configure(WebApiConfig.Register);  
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
