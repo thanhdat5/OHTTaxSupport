@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TaxDetailService.cs" />
+    <Compile Include="ProductService.cs" />
+    <Compile Include="TaxService.cs" />
+    <Compile Include="CustomerTypeService.cs" />
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="DepartmentService.cs" />
+    <Compile Include="CompanyService.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="TaxCategoryService.cs" />
+    <Compile Include="AccountService.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="UserAccountService.cs" />
+    <Compile Include="UnitService.cs" />
+    <Compile Include="TaxTypeService.cs" />
     <Compile Include="TaxValueService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

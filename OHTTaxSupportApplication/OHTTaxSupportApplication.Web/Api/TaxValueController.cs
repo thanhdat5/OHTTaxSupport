@@ -12,7 +12,7 @@ using OHTTaxSupportApplication.Web.Infrastructure.Core;
 
 namespace OHTTaxSupportApplication.Web.Api
 {
-    [RoutePrefix("api/taxvalue")]
+    [RoutePrefix("api/taxvalues")]
     public class TaxValueController : ApiControllerBase
     {
         #region Initialize

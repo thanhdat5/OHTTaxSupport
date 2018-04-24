@@ -173,6 +173,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\TaxDetailController.cs" />
+    <Compile Include="Api\UserController.cs" />
+    <Compile Include="Api\UserAccountController.cs" />
+    <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\TaxController.cs" />
+    <Compile Include="Api\DepartmentController.cs" />
+    <Compile Include="Api\CustomerTypeController.cs" />
+    <Compile Include="Api\CustomerController.cs" />
+    <Compile Include="Api\CompanyController.cs" />
+    <Compile Include="Api\TaxCategoryController.cs" />
+    <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\UnitController.cs" />
+    <Compile Include="Api\TaxTypeController.cs" />
     <Compile Include="Api\TaxValueController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
