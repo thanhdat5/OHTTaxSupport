@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.Common", "OHTTaxSupportApplication.Common\OHTTaxSupportApplication.Common.csproj", "{84208628-A57D-4076-852E-3DD7BE1A1489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.Model", "OHTTaxSupportApplication.Model\OHTTaxSupportApplication.Model.csproj", "{9ED0449B-5404-4777-804D-1E82ECF5FAAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.Data", "OHTTaxSupportApplication.Data\OHTTaxSupportApplication.Data.csproj", "{5C6050E3-6B1A-48E5-A578-DD6A332B0E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.Service", "OHTTaxSupportApplication.Service\OHTTaxSupportApplication.Service.csproj", "{57B8A222-3EE6-446A-9C53-494359AFAE8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.UnitTest", "OHTTaxSupportApplication.UnitTest\OHTTaxSupportApplication.UnitTest.csproj", "{C8AD0BB7-B156-4AC0-9C7E-EAB664908BCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OHTTaxSupportApplication.Web", "OHTTaxSupportApplication.Web\OHTTaxSupportApplication.Web.csproj", "{CBF56697-1BB2-41A3-B007-0484ACD62881}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84208628-A57D-4076-852E-3DD7BE1A1489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84208628-A57D-4076-852E-3DD7BE1A1489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84208628-A57D-4076-852E-3DD7BE1A1489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84208628-A57D-4076-852E-3DD7BE1A1489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED0449B-5404-4777-804D-1E82ECF5FAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED0449B-5404-4777-804D-1E82ECF5FAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED0449B-5404-4777-804D-1E82ECF5FAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED0449B-5404-4777-804D-1E82ECF5FAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6050E3-6B1A-48E5-A578-DD6A332B0E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6050E3-6B1A-48E5-A578-DD6A332B0E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6050E3-6B1A-48E5-A578-DD6A332B0E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6050E3-6B1A-48E5-A578-DD6A332B0E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B8A222-3EE6-446A-9C53-494359AFAE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B8A222-3EE6-446A-9C53-494359AFAE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B8A222-3EE6-446A-9C53-494359AFAE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B8A222-3EE6-446A-9C53-494359AFAE8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8AD0BB7-B156-4AC0-9C7E-EAB664908BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8AD0BB7-B156-4AC0-9C7E-EAB664908BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8AD0BB7-B156-4AC0-9C7E-EAB664908BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8AD0BB7-B156-4AC0-9C7E-EAB664908BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF56697-1BB2-41A3-B007-0484ACD62881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF56697-1BB2-41A3-B007-0484ACD62881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF56697-1BB2-41A3-B007-0484ACD62881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF56697-1BB2-41A3-B007-0484ACD62881}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC7EF99A-576B-46C3-B428-EAEA2074DDFE}
+	EndGlobalSection
+EndGlobal

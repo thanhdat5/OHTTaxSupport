@@ -1,0 +1,6 @@
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\bin\Debug\OHTTaxSupportApplication.Common.dll
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\bin\Debug\OHTTaxSupportApplication.Common.pdb
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\obj\Debug\OHTTaxSupportApplication.Common.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\obj\Debug\OHTTaxSupportApplication.Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\obj\Debug\OHTTaxSupportApplication.Common.dll
+C:\Users\Admin\Desktop\OHTTaxSupportApplication\OHTTaxSupportApplication.Common\obj\Debug\OHTTaxSupportApplication.Common.pdb
