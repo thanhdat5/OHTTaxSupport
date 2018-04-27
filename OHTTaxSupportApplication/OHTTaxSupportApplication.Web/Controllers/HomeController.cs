@@ -13,18 +13,17 @@ namespace OHTTaxSupportApplication.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+        public ActionResult Login()
+        {    
             return View();
         }
-
-        public ActionResult Contact()
+                   
+        public ActionResult Logout()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            System.Web.HttpContext.Current.Session["UserLogged"] = null;
+            Session.Clear();
+            Session.RemoveAll();
+            return RedirectToAction("Login");
         }
     }
 }

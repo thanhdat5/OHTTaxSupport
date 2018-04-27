@@ -22,6 +22,14 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
             this.Property(t => t.Fullname)
                 .IsRequired()
                 .HasMaxLength(250);
+            this.Property(t => t.Image)
+                .HasMaxLength(500);
+
+            this.Property(t => t.Address)
+                .HasMaxLength(500);
+
+            this.Property(t => t.AboutMe)
+                .HasMaxLength(250);
 
             this.Property(t => t.Image)
                 .HasMaxLength(500);
@@ -34,6 +42,10 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
             this.Property(t => t.Fullname).HasColumnName("Fullname");
             this.Property(t => t.CompanyID).HasColumnName("CompanyID");
             this.Property(t => t.Image).HasColumnName("Image");
+            this.Property(t => t.Age).HasColumnName("Age");
+            this.Property(t => t.Address).HasColumnName("Address");
+            this.Property(t => t.AboutMe).HasColumnName("AboutMe");
+            this.Property(t => t.LastOnline).HasColumnName("LastOnline");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
 
             // Relationships

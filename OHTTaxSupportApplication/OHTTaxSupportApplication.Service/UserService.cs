@@ -26,6 +26,8 @@ namespace OHTTaxSupportApplication.Service
 
         ApiResponseViewModel SetInActive(int id);
 
+        ApiResponseViewModel CheckLogin(UserViewModel obj);
+
     }
 
     public class UserService : IUserService
@@ -66,6 +68,10 @@ namespace OHTTaxSupportApplication.Service
                     Fullname = m.Fullname,
                     CompanyID = m.CompanyID,
                     Image = m.Image,
+                    Age = m.Age,
+                    Address = m.Address,
+                    AboutMe = m.AboutMe,
+                    LastOnline = Common.Utilities.TimeAgo(m.LastOnline),
                     IsActive = m.IsActive ?? false,
                     Company = m.Company.CompanyName,
                     UserAccounts = _userAccountRepository.GetListUserAccountByUserID(m.ID)
@@ -114,6 +120,10 @@ namespace OHTTaxSupportApplication.Service
                         Fullname = m.Fullname,
                         CompanyID = m.CompanyID,
                         Image = m.Image,
+                        Age = m.Age,
+                        Address = m.Address,
+                        AboutMe = m.AboutMe,
+                        LastOnline = Common.Utilities.TimeAgo(m.LastOnline),
                         IsActive = m.IsActive ?? false,
                         Company = m.Company.CompanyName,
                         UserAccounts = _userAccountRepository.GetListUserAccountByUserID(m.ID)
@@ -164,6 +174,10 @@ namespace OHTTaxSupportApplication.Service
                     result.Fullname = tempResult.Fullname;
                     result.CompanyID = tempResult.CompanyID;
                     result.Image = tempResult.Image;
+                    result.Age = tempResult.Age;
+                    result.Address = tempResult.Address;
+                    result.AboutMe = tempResult.AboutMe;
+                    result.LastOnline = Common.Utilities.TimeAgo(tempResult.LastOnline);
                     result.IsActive = tempResult.IsActive ?? false;
                     result.Company = tempResult.Company.CompanyName;
                     result.UserAccounts = _userAccountRepository.GetListUserAccountByUserID(tempResult.ID);
@@ -334,6 +348,73 @@ namespace OHTTaxSupportApplication.Service
                 response.Message = CommonConstants.ErrorMessage + " " + ex.Message;
             }
             return response;
+        }
+
+        /// <summary>
+        /// Check login
+        /// </summary>
+        /// <param name="obj">Username and password</param>
+        /// <returns></returns>
+        public ApiResponseViewModel CheckLogin(UserViewModel obj)
+        {
+            var result = new UserViewModel();
+            var response = new ApiResponseViewModel
+            {
+                Code = CommonConstants.ApiResponseSuccessCode,
+                Message = null,
+                Result = null
+            };
+
+            try
+            {
+                var user = _userRepository.GetUserByUsername(obj.Username);
+                if (user == null)
+                {
+                    response.Code = 2;
+                    response.Message = "Your account is not exists.";
+                }
+                else
+                {
+                    if (user.IsActive != true)
+                    {
+                        response.Code = 3;
+                        response.Message = "Your account is inactive. Please contact adminitrator.";
+                    }
+                    else
+                    {
+                        if (Utilities.Md5(obj.Password) != user.Password)
+                        {
+                            response.Code = 4;
+                            response.Message = "Password is incorect.";
+                        }
+                        else
+                        {
+                            result.ID = user.ID;
+                            result.Username = user.Username;
+                            result.Password = user.Password;
+                            result.Fullname = user.Fullname;
+                            result.CompanyID = user.CompanyID;
+                            result.Image = user.Image;
+                            result.Age = user.Age;
+                            result.Address = user.Address;
+                            result.AboutMe = user.AboutMe;
+                            result.LastOnline = Common.Utilities.TimeAgo(user.LastOnline);
+                            result.IsActive = user.IsActive ?? false;
+                            result.Company = user.Company.CompanyName;
+                            result.UserAccounts = _userAccountRepository.GetListUserAccountByUserID(user.ID);
+                            response.Result = result;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Code = CommonConstants.ApiResponseExceptionCode;
+                response.Message = CommonConstants.ErrorMessage + " " + ex.Message;
+            }
+            return response;
+
         }
     }
 }

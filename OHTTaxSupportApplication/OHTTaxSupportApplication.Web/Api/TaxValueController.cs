@@ -61,7 +61,7 @@ namespace OHTTaxSupportApplication.Web.Api
             return _taxValueService.Update(obj);
         }
 
-        [Route("delete")]
+        [Route("delete/{id:int}")]
         [HttpDelete]
         public ApiResponseViewModel Delete(int id)
         {

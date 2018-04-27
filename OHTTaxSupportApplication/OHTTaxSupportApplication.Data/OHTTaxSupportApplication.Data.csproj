@@ -77,6 +77,14 @@
     <Compile Include="Migrations\201804240124048_InitDB.Designer.cs">
       <DependentUpon>201804240124048_InitDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804242102361_RemoveIdentity.cs" />
+    <Compile Include="Migrations\201804242102361_RemoveIdentity.Designer.cs">
+      <DependentUpon>201804242102361_RemoveIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804261527097_AddSomeColumn.cs" />
+    <Compile Include="Migrations\201804261527097_AddSomeColumn.Designer.cs">
+      <DependentUpon>201804261527097_AddSomeColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OHTTaxSupport_dbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +121,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804240124048_InitDB.resx">
       <DependentUpon>201804240124048_InitDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804242102361_RemoveIdentity.resx">
+      <DependentUpon>201804242102361_RemoveIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261527097_AddSomeColumn.resx">
+      <DependentUpon>201804261527097_AddSomeColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

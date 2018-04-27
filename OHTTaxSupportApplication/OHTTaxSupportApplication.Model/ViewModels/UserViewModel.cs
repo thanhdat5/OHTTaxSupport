@@ -11,6 +11,10 @@ namespace OHTTaxSupportApplication.Model.ViewModels
         public string Fullname { get; set; }
         public int CompanyID { get; set; }
         public string Image { get; set; }
+        public string Age { get; set; }
+        public string Address { get; set; }
+        public string AboutMe { get; set; }
+        public string LastOnline { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string Company { get; set; }
         public IEnumerable<UserAccountViewModel> UserAccounts { get; set; }
