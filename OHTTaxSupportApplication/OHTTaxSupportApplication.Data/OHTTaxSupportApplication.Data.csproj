@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201804261527097_AddSomeColumn.Designer.cs">
       <DependentUpon>201804261527097_AddSomeColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806171720519_UpdateFromGit.cs" />
+    <Compile Include="Migrations\201806171720519_UpdateFromGit.Designer.cs">
+      <DependentUpon>201806171720519_UpdateFromGit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OHTTaxSupport_dbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804261527097_AddSomeColumn.resx">
       <DependentUpon>201804261527097_AddSomeColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806171720519_UpdateFromGit.resx">
+      <DependentUpon>201806171720519_UpdateFromGit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

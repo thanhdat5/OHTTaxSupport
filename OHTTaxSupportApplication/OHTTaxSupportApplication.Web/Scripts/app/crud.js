@@ -28,7 +28,7 @@ function ohtCallServiceToAdd(data, url, ajaxSuccess) {
 function ohtCallServiceToUpdate(data, url, ajaxSuccess) {
     $('*').css('cursor', 'wait');
     $.ajax({
-        method: "PUT",
+        method: "POST",
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         data: JSON.stringify(data),
@@ -42,7 +42,7 @@ function ohtCallServiceToUpdate(data, url, ajaxSuccess) {
 function ohtCallServiceToDelete(url, ajaxSuccess) {
     $('*').css('cursor', 'wait');
     $.ajax({
-        method: "DELETE",
+        method: "POST",
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         url: url,
@@ -62,7 +62,7 @@ function ohtToastMessage(type, message) {
         hideAfter: 2000,
         stack: 5,
         position: 'top-right',
-        loader: false,
+        loader: false
     });
 }
 function ohtShowError(error) {

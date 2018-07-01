@@ -15,7 +15,7 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(250);
 
-            this.Property(t => t.Adderss)
+            this.Property(t => t.Address)
                 .HasMaxLength(500);
 
             this.Property(t => t.PhoneNumber)
@@ -27,7 +27,7 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
             this.Property(t => t.CustomerTypeID).HasColumnName("CustomerTypeID");
             this.Property(t => t.CustomerName).HasColumnName("CustomerName");
             this.Property(t => t.CompanyID).HasColumnName("CompanyID");
-            this.Property(t => t.Adderss).HasColumnName("Adderss");
+            this.Property(t => t.Address).HasColumnName("Address");
             this.Property(t => t.PhoneNumber).HasColumnName("PhoneNumber");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
 

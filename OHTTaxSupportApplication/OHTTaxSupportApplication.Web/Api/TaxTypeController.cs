@@ -55,21 +55,21 @@ namespace OHTTaxSupportApplication.Web.Api
         }
 
         [Route("update")]
-        [HttpPut]
+        [HttpPost]
         public ApiResponseViewModel Update(TaxType obj)
         {
             return _taxTypeService.Update(obj);
         }
 
         [Route("delete")]
-        [HttpDelete]
+        [HttpPost]
         public ApiResponseViewModel Delete(int id)
         {
             return _taxTypeService.Delete(id);
         }
 
         [Route("setinactive")]
-        [HttpPut]
+        [HttpPost]
         public ApiResponseViewModel SetInActive(int id)
         {
             return _taxTypeService.SetInActive(id);

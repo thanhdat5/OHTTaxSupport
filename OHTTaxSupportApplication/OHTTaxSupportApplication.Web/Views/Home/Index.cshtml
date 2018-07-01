@@ -1,4 +1,17 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using OHTTaxSupportApplication.Model.ViewModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    UserViewModel user = new UserViewModel();
+    if (HttpContext.Current.Session["UserLogged"] == null)
+    {
+        Response.Redirect("/Home/Login");
+    }
+    else
+    {
+        user = (UserViewModel)HttpContext.Current.Session["UserLogged"];
+    }
 }
-  xxxx
+@{
+    ViewBag.Title = "Dashboard";
+}
+<h2 class="text-center">Welcome <b class="text-danger">@user.Fullname</b>,<br /><br />Have a nice day !</h2>

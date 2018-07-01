@@ -9,7 +9,7 @@ namespace OHTTaxSupportApplication.Model.Models
         public int CustomerTypeID { get; set; }
         public string CustomerName { get; set; }
         public int CompanyID { get; set; }
-        public string Adderss { get; set; }
+        public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public virtual Company Company { get; set; }

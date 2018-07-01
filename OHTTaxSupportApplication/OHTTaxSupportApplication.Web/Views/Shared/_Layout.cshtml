@@ -59,6 +59,10 @@
         .oht-edit-mode {
             display: none;
         }
+
+        .profile-info-name {
+            width: 140px;
+        }
     </style>
     @RenderSection("styles", required: false)
 </head>
@@ -84,7 +88,7 @@
                 <a href="/" class="navbar-brand">
                     <small>
                         <i class="fa fa-balance-scale"></i>
-                        Tax Support Application
+                        Tax Support App
                     </small>
                 </a>
             </div>
@@ -93,7 +97,7 @@
                 <ul class="nav ace-nav">
                     <li class="light-blue">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="@user.Image" alt="@user.Fullname's Photo" />
+                            <img class="nav-user-photo" width="35" height="35" src="@user.Image" alt="@user.Fullname's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
                                 @user.Fullname
@@ -144,21 +148,21 @@
 
             <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                 <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                    <button class="btn btn-success">
-                        <i class="ace-icon fa fa-signal"></i>
-                    </button>
+                    <a class="btn btn-success" href="/BalanceScale">
+                        <i class="ace-icon fa fa-balance-scale"></i>
+                    </a>
 
-                    <button class="btn btn-info">
-                        <i class="ace-icon fa fa-pencil"></i>
-                    </button>
+                    <a class="btn btn-info" href="/Products">
+                        <i class="ace-icon fa fa-product-hunt"></i>
+                    </a>
 
-                    <button class="btn btn-warning">
-                        <i class="ace-icon fa fa-users"></i>
-                    </button>
+                    <a class="btn btn-warning" href="/Users">
+                        <i class="ace-icon fa fa-address-card"></i>
+                    </a>
 
-                    <button class="btn btn-danger">
+                    <a class="btn btn-danger" href="/Settings">
                         <i class="ace-icon fa fa-cogs"></i>
-                    </button>
+                    </a>
                 </div>
 
                 <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -196,21 +200,118 @@
 
                     <b class="arrow"></b>
                 </li>
-                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Users" ? "active" : "")">
-                    <a href="/Users">
-                        <i class="menu-icon fa fa-users"></i>
-                        <span class="menu-text"> Users </span>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Products" ? "active" : "")">
+                    <a href="/Products">
+                        <i class="menu-icon fa fa-product-hunt "></i>
+                        <span class="menu-text"> Products </span>
                     </a>
 
                     <b class="arrow"></b>
                 </li>
+
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Users"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "Accounts"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "UserAccounts"
+                                 ? "open active" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa fa-address-card"></i>
+                        <span class="menu-text"> Users </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Users"? "active" : "")">
+                            <a href="/Users">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                User management
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Accounts"? "active" : "")">
+                            <a href="/Accounts">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Accounts
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "UserAccounts"? "active" : "")">
+                            <a href="/UserAccounts">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                User Accounts
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Customers"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "CustomerTypes"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "Companies"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "Departments"
+                                 ? "open active" : "")">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-group"></i>
+                        <span class="menu-text"> Customers </span>
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Customers"? "active" : "")">
+                            <a href="/Customers">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Customer management
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "CustomerTypes"? "active" : "")">
+                            <a href="/CustomerTypes">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Customer Types
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Companies"? "active" : "")">
+                            <a href="/Companies">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Companies
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Departments"? "active" : "")">
+                            <a href="/Departments">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Departments
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
                 <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxCategories"
                              || ViewContext.RouteData.Values["Controller"].ToString() == "TaxValues"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "TaxTypes"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "Units"
                              || ViewContext.RouteData.Values["Controller"].ToString() == "Settings"
                                  ? "open active" : "")">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-cogs"></i>
-                        <span class="menu-text"> Config </span>
+                        <span class="menu-text"> Configs </span>
 
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
@@ -221,7 +322,7 @@
                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxValues" ? "active" : "")">
                             <a href="/TaxValues">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Tax Value
+                                Tax Values
                             </a>
 
                             <b class="arrow"></b>
@@ -230,11 +331,31 @@
                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxCategories"? "active" : "")">
                             <a href="/TaxCategories">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Tax Category
+                                Tax Categories
                             </a>
 
                             <b class="arrow"></b>
                         </li>
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxTypes"? "active" : "")">
+                            <a href="/TaxTypes">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tax Types
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Units"? "active" : "")">
+                            <a href="/Units">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Units
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
                     </ul>
                 </li>
             </ul><!-- /.nav-list -->

@@ -215,6 +215,8 @@ namespace OHTTaxSupportApplication.Service
 
             try
             {
+                obj.IsActive = true;
+                obj.LastOnline = DateTime.Now;
                 result = _userRepository.Add(obj);
                 _unitOfWork.Commit();
                 response.Message = CommonConstants.AddSuccess;
@@ -246,10 +248,22 @@ namespace OHTTaxSupportApplication.Service
 
             try
             {
-                var exists = _userRepository.CheckContains(m => m.ID == obj.ID);
-                if (exists)
+                var exists = _userRepository.GetSingleById(obj.ID);
+                if (exists != null)
                 {
-                    _userRepository.Update(obj);
+                    exists.Username = obj.Username;
+                    if (obj.Password != exists.Password)
+                    {
+                        exists.Password = Utilities.Md5(obj.Password);
+                    }
+                    exists.Fullname = obj.Fullname;
+                    exists.CompanyID = obj.CompanyID;
+                    exists.Image = obj.Image;
+                    exists.Age = obj.Age;
+                    exists.Address = obj.Address;
+                    exists.AboutMe = obj.AboutMe;
+                    exists.IsActive = obj.IsActive;
+                    _userRepository.Update(exists);
                     _unitOfWork.Commit();
                     response.Message = CommonConstants.SaveSuccess;
                 }
@@ -382,7 +396,7 @@ namespace OHTTaxSupportApplication.Service
                     }
                     else
                     {
-                        if (Utilities.Md5(obj.Password) != user.Password)
+                        if (Utilities.Md5(obj.Password).ToLower() != user.Password.ToLower())
                         {
                             response.Code = 4;
                             response.Message = "Password is incorect.";

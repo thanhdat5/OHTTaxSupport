@@ -7,30 +7,30 @@ namespace OHTTaxSupportApplication.Data.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.ApplicationRoleGroups", "GroupId", "dbo.ApplicationGroups");
-            DropForeignKey("dbo.ApplicationRoleGroups", "RoleId", "dbo.ApplicationRoles");
-            DropForeignKey("dbo.ApplicationUserGroups", "GroupId", "dbo.ApplicationGroups");
-            DropForeignKey("dbo.ApplicationUserClaims", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserLogins", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserRoles", "ApplicationUser_Id", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserGroups", "UserId", "dbo.ApplicationUsers");
-            DropForeignKey("dbo.ApplicationUserRoles", "IdentityRole_Id", "dbo.ApplicationRoles");
-            DropIndex("dbo.ApplicationRoleGroups", new[] { "GroupId" });
-            DropIndex("dbo.ApplicationRoleGroups", new[] { "RoleId" });
-            DropIndex("dbo.ApplicationUserRoles", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ApplicationUserRoles", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.ApplicationUserGroups", new[] { "UserId" });
-            DropIndex("dbo.ApplicationUserGroups", new[] { "GroupId" });
-            DropIndex("dbo.ApplicationUserClaims", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.ApplicationUserLogins", new[] { "ApplicationUser_Id" });
-            DropTable("dbo.ApplicationGroups");
-            DropTable("dbo.ApplicationRoleGroups");
-            DropTable("dbo.ApplicationRoles");
-            DropTable("dbo.ApplicationUserRoles");
-            DropTable("dbo.ApplicationUserGroups");
-            DropTable("dbo.ApplicationUsers");
-            DropTable("dbo.ApplicationUserClaims");
-            DropTable("dbo.ApplicationUserLogins");
+            //DropForeignKey("dbo.ApplicationRoleGroups", "GroupId", "dbo.ApplicationGroups");
+            //DropForeignKey("dbo.ApplicationRoleGroups", "RoleId", "dbo.ApplicationRoles");
+            //DropForeignKey("dbo.ApplicationUserGroups", "GroupId", "dbo.ApplicationGroups");
+            //DropForeignKey("dbo.ApplicationUserClaims", "ApplicationUser_Id", "dbo.ApplicationUsers");
+            //DropForeignKey("dbo.ApplicationUserLogins", "ApplicationUser_Id", "dbo.ApplicationUsers");
+            //DropForeignKey("dbo.ApplicationUserRoles", "ApplicationUser_Id", "dbo.ApplicationUsers");
+            //DropForeignKey("dbo.ApplicationUserGroups", "UserId", "dbo.ApplicationUsers");
+            //DropForeignKey("dbo.ApplicationUserRoles", "IdentityRole_Id", "dbo.ApplicationRoles");
+            //DropIndex("dbo.ApplicationRoleGroups", new[] { "GroupId" });
+            //DropIndex("dbo.ApplicationRoleGroups", new[] { "RoleId" });
+            //DropIndex("dbo.ApplicationUserRoles", new[] { "ApplicationUser_Id" });
+            //DropIndex("dbo.ApplicationUserRoles", new[] { "IdentityRole_Id" });
+            //DropIndex("dbo.ApplicationUserGroups", new[] { "UserId" });
+            //DropIndex("dbo.ApplicationUserGroups", new[] { "GroupId" });
+            //DropIndex("dbo.ApplicationUserClaims", new[] { "ApplicationUser_Id" });
+            //DropIndex("dbo.ApplicationUserLogins", new[] { "ApplicationUser_Id" });
+            //DropTable("dbo.ApplicationGroups");
+            //DropTable("dbo.ApplicationRoleGroups");
+            //DropTable("dbo.ApplicationRoles");
+            //DropTable("dbo.ApplicationUserRoles");
+            //DropTable("dbo.ApplicationUserGroups");
+            //DropTable("dbo.ApplicationUsers");
+            //DropTable("dbo.ApplicationUserClaims");
+            //DropTable("dbo.ApplicationUserLogins");
         }
         
         public override void Down()

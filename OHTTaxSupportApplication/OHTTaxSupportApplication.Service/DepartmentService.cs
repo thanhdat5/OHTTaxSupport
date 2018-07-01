@@ -31,12 +31,14 @@ namespace OHTTaxSupportApplication.Service
     public class DepartmentService : IDepartmentService
     {
         private IDepartmentRepository _departmentRepository;
+        private ICompanyRepository _companyRepository;
 
         private IUnitOfWork _unitOfWork;
 
-        public DepartmentService(IDepartmentRepository departmentRepository, IUnitOfWork unitOfWork)
+        public DepartmentService(IDepartmentRepository departmentRepository, ICompanyRepository companyRepository, IUnitOfWork unitOfWork)
         {
             this._departmentRepository = departmentRepository;
+            this._companyRepository = companyRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -61,6 +63,7 @@ namespace OHTTaxSupportApplication.Service
                     ID = m.ID,
                     DepartmentName = m.DepartmentName,
                     CompanyID = m.CompanyID,
+                    CompanyName = _companyRepository.GetSingleById(m.CompanyID)?.CompanyName,
                     Address = m.Address,
                     IsActive = m.IsActive ?? false,
                     Company = m.Company.CompanyName
@@ -106,6 +109,7 @@ namespace OHTTaxSupportApplication.Service
                         ID = m.ID,
                         DepartmentName = m.DepartmentName,
                         CompanyID = m.CompanyID,
+                        CompanyName = _companyRepository.GetSingleById(m.CompanyID)?.CompanyName,
                         Address = m.Address,
                         IsActive = m.IsActive ?? false,
                         Company = m.Company.CompanyName

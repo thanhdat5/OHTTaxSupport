@@ -31,12 +31,16 @@ namespace OHTTaxSupportApplication.Service
     public class CustomerService : ICustomerService
     {
         private ICustomerRepository _customerRepository;
+        private ICompanyRepository _companyRepository;
+        private ICustomerTypeRepository _customerTypeRepository;
 
         private IUnitOfWork _unitOfWork;
 
-        public CustomerService(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
+        public CustomerService(ICustomerRepository customerRepository, ICompanyRepository companyRepository, ICustomerTypeRepository customerTypeRepository, IUnitOfWork unitOfWork)
         {
             this._customerRepository = customerRepository;
+            this._companyRepository = companyRepository;
+            this._customerTypeRepository = customerTypeRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -62,7 +66,7 @@ namespace OHTTaxSupportApplication.Service
                     CustomerTypeID = m.CustomerTypeID,
                     CustomerName = m.CustomerName,
                     CompanyID = m.CompanyID,
-                    Adderss = m.Adderss,
+                    Address = m.Address,
                     PhoneNumber = m.PhoneNumber,
                     IsActive = m.IsActive ?? false,
                     Company = m.Company.CompanyName,
@@ -110,7 +114,7 @@ namespace OHTTaxSupportApplication.Service
                         CustomerTypeID = m.CustomerTypeID,
                         CustomerName = m.CustomerName,
                         CompanyID = m.CompanyID,
-                        Adderss = m.Adderss,
+                        Address = m.Address,
                         PhoneNumber = m.PhoneNumber,
                         IsActive = m.IsActive ?? false,
                         Company = m.Company.CompanyName,
@@ -160,7 +164,7 @@ namespace OHTTaxSupportApplication.Service
                     result.CustomerTypeID = tempResult.CustomerTypeID;
                     result.CustomerName = tempResult.CustomerName;
                     result.CompanyID = tempResult.CompanyID;
-                    result.Adderss = tempResult.Adderss;
+                    result.Address = tempResult.Address;
                     result.PhoneNumber = tempResult.PhoneNumber;
                     result.IsActive = tempResult.IsActive ?? false;
                     result.CustomerType = tempResult.CustomerType.CustomerTypeName;
@@ -230,10 +234,16 @@ namespace OHTTaxSupportApplication.Service
 
             try
             {
-                var exists = _customerRepository.CheckContains(m => m.ID == obj.ID);
-                if (exists)
+                var exists = _customerRepository.GetSingleById(obj.ID);
+                if (exists != null)
                 {
-                    _customerRepository.Update(obj);
+                    exists.Address = obj.Address;
+                    exists.CompanyID = obj.CompanyID;
+                    exists.CustomerName = obj.CustomerName;
+                    exists.CustomerTypeID = obj.CustomerTypeID;
+                    exists.IsActive = obj.IsActive;
+                    exists.PhoneNumber = obj.PhoneNumber;
+                    _customerRepository.Update(exists);
                     _unitOfWork.Commit();
                     response.Message = CommonConstants.SaveSuccess;
                 }

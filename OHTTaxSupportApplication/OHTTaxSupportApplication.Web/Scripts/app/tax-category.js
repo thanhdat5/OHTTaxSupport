@@ -77,6 +77,7 @@ function deleteItem(id) {
 }
 function deleteItemSuccess(data) {
     $('*').css('cursor', 'default');
+    cancel();
     if (data.Code != 0) {
         ohtShowCustomError(data.Message);
     } else {
