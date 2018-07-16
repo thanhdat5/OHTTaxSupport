@@ -6,6 +6,7 @@ var urlCreateDetail = "/api/InvoiceDetails/create";
 var urlGetAllDetailById = "/api/InvoiceDetails/getbyinvoiceid/";
 var urlDeleteDetail = "/api/InvoiceDetails/setinactive?id=";
 
+var urlSave = "/api/invoices/update";
 var urlSaveAll = "/api/invoices/saveAll";
 
 var tabsCount = 0;
@@ -156,6 +157,14 @@ $(function () {
                             if ($(".invoice-manager .nav-tabs li").children('a').length > 1) {
                                 $(".invoice-manager .nav-tabs li").children('a').first().click();
                             }
+
+                            var tempLst = [];
+                            for (var i = 0; i < invoicesList.length; i++) {
+                                if (invoicesList[i].id != selectedId) {
+                                    tempLst.push(invoicesList[i]);
+                                }
+                            }
+                            invoicesList = tempLst;
                             ohtShowSuccess(data.Message);
                         }
                     },
@@ -164,6 +173,56 @@ $(function () {
                     }
                 });
             }
+        })
+        .on("click", "i.fa-save", function () {
+            var that = this;
+            var selectedId = that.id.replace('save-invoice-', '');
+            
+            var postData = [];
+            for (var i = 0; i < invoicesList.length; i++) {
+                if (invoicesList[i].id == selectedId) {
+                    postData.push(invoicesList[i]);
+                    break;
+                }
+            }
+            if (postData.length<=0 || postData[0].details == null || postData[0].details.length <= 0) {
+                ohtShowCustomError("Please add more invoice details.");
+                return;
+            }
+
+            $('*').css('cursor', 'wait');
+            $.ajax({
+                method: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: JSON.stringify(postData),
+                url: urlSaveAll,
+                success: function (data) {
+                    $('*').css('cursor', 'default');
+                    if (data.Code != 0) {
+                        ohtShowCustomError(data.Message);
+                    } else {
+                        var anchor = $(that).siblings('a');
+                        $(anchor.attr('href')).remove();
+                        $(that).parent().remove();
+                        tabsCount--;
+                        if ($(".invoice-manager .nav-tabs li").children('a').length > 1) {
+                            $(".invoice-manager .nav-tabs li").children('a').first().click();
+                        }
+                        var tempLst = [];
+                        for (var i = 0; i < invoicesList.length; i++) {
+                            if (invoicesList[i].id != selectedId) {
+                                tempLst.push(invoicesList[i]);
+                            }
+                        }
+                        invoicesList = tempLst;
+                        ohtShowSuccess(data.Message);
+                    }
+                },
+                error: function (error) {
+                    ohtShowError(error);
+                }
+            });
         });
     $('.add-invoice').click(function (e) {
         e.preventDefault();
@@ -196,7 +255,7 @@ $(function () {
                     invoicesList.push({ id: id, details: [] });
 
                     var tabId = 'invoice_' + id;
-                    $(that).closest('li').before('<li><a href="#invoice_' + id + '">#000' + id + '</a> <span id="remove-invoice-' + id + '"> x </span></li>');
+                    $(that).closest('li').before('<li><a href="#invoice_' + id + '">#000' + id + '</a> <span id="remove-invoice-' + id + '"><i class="fa fa-trash"></i></span><i class="fa fa-save text-success" id="save-invoice-' + id + '" style="position: absolute;right: 35px;top: 0;z-index: 9;font-size: 18px;padding:9px 10px;cursor:pointer"></i></li>');
 
                     var tabContent = "<div class='tab-pane' id='" + tabId + "'>";
                     //###################################################
@@ -217,7 +276,7 @@ $(function () {
 
 
                     tabContent += "<div class='col-md-3 col-sm-6'>";
-                    tabContent += "<div class='form-group'><label>Total</label><input type='number' disabled='disabled' class='form-control' id='txtTotal-" + id + "' name='txtTotal-" + id + "' value='0' /><span class='text-danger' id='txtTotal-" + id + "_error'></span></div>";
+                    tabContent += "<div class='form-group'><label>Total</label><input type='text' disabled='disabled' class='form-control' id='txtTotal-" + id + "' name='txtTotal-" + id + "' value='0' /><span class='text-danger' id='txtTotal-" + id + "_error'></span></div>";
                     tabContent += "</div>";
                     tabContent += "</div>";
                     //###################################################
@@ -265,7 +324,7 @@ $(function () {
                     tabContent += "<div class='hidden-lg hidden-md hidden-sm'><div style='clear:both;width:100%;height:10px;'></div></div>";
 
                     tabContent += "<div class='col-md-2 col-sm-6'>";
-                    tabContent += "<div class='form-group'><label>NET.€&nbsp;<span class='text-danger'>*</span></label><input type='number' class='form-control' id='txtNET-" + id + "' name='txtNET-" + id + "' /><span class='text-danger' id='txtNET-" + id + "_error'></span></div>";
+                    tabContent += "<div class='form-group'><label>NET.€&nbsp;<span class='text-danger'>*</span></label><input type='number' onkeyup='totalNET(" + id + ")' onmouseup='totalNET(" + id + ")' class='form-control' id='txtNET-" + id + "' name='txtNET-" + id + "' /><span class='text-danger' id='txtNET-" + id + "_error'></span></div>";
                     tabContent += "</div>";
 
 
@@ -384,10 +443,12 @@ function resetValidate(id) {
     $('#cboCustomer-' + id + "_error").text(blankStr);
 }
 
+
 function saveInvoiceDetails(id) {
+    resetValidate(id);
+
     var errRequired = 'Please input data for this field.';
     var isValid = true;
-    resetValidate(id);
     var txtDateCreated = $('#txtDateCreated-' + id).val();
     var cboInOut = $('#cboInOut-' + id).val();
     var cboProduct = $('#cboProduct-' + id).val();
@@ -435,10 +496,9 @@ function saveInvoiceDetails(id) {
         $('#cboCustomer-' + id + "_error").text(errRequired);
         isValid = false;
     }
-
     if (!isValid) {
         return;
-    }
+    };
 
     var cboProductName = tempProductsDDL.find(function (element) { return element.ID == cboProduct; }).ProductName;
     var cboTaxValueValue = tempTaxValuesDDL.find(function (element) { return element.ID == cboTaxValue; }).Value;
@@ -461,7 +521,7 @@ function saveInvoiceDetails(id) {
         InvoiceID: id,
         ProductID: cboProduct,
         UnitID: cboUnit,
-        Value: txtNET,
+        Value: Number(txtNET),
         Quanlity: txtQuantity,
         DepartmentID: cboDepartment,
         CategoryID: cboCategory,
@@ -575,7 +635,7 @@ function refreshDataDetail(id) {
             break;
         }
     }
-
+    totalNET(id);
     if (invoiceIndex == -1) {
         $('#oht-invoice-data-' + id).html('<tr class="oht-loading"><td colspan="10">No record found.</td></tr>');
         $('#oht-invoice-data-' + id).html(innerHtml);
@@ -640,4 +700,20 @@ function saveAll() {
 
 function showHistory() {
     window.location = "/Invoices";
+}
+
+function totalNET(invoiceID) {
+    var total = Number($('#txtNET-' + invoiceID).val());
+    try {
+        for (var i = 0; i < invoicesList.length; i++) {
+            if (invoicesList[i].id == invoiceID) {
+                for (var j = 0; j < invoicesList[i].details.length; j++) {
+                    total += Number(invoicesList[i].details[j].Value);
+                }
+            }
+        }
+    } catch (e) {
+        total = 0;
+    }
+    $('#txtTotal-' + invoiceID).val(Number(total).toLocaleString("es-ES", { minimumFractionDigits: 2 }) + ' €');
 }
