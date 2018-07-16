@@ -30,7 +30,7 @@ namespace OHTTaxSupportApplication.Data.Repositories
                     AccountCode = m.Account.AccountCode,
                     AccountSH = m.Account.SH,
                     AccountTaxVaue = m.Account.TaxValue.Value,
-                    AccountTaxCategory = m.Account.TaxCategory.Category,
+                    AccountCategory = m.Account.Category.CategoryName,
                     UserName = m.User.Username,
                     UserImage = m.User.Username,
                     UserCompany = m.User.Fullname,

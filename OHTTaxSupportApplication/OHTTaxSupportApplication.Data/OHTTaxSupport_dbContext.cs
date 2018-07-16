@@ -23,10 +23,10 @@ namespace OHTTaxSupportApplication.Data
         public DbSet<Department> Departments { get; set; }
         public DbSet<Error> Errors { get; set; }
         public DbSet<Product> Products { get; set; }   
-        public DbSet<Tax> Taxes { get; set; }
-        public DbSet<TaxCategory> TaxCategories { get; set; }
-        public DbSet<TaxDetail> TaxDetails { get; set; }
-        public DbSet<TaxType> TaxTypes { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public DbSet<Type> Types { get; set; }
         public DbSet<TaxValue> TaxValues { get; set; }
         public DbSet<Unit> Units { get; set; }
         public DbSet<User> Users { get; set; }
@@ -41,10 +41,10 @@ namespace OHTTaxSupportApplication.Data
             modelBuilder.Configurations.Add(new DepartmentMap());
             modelBuilder.Configurations.Add(new ErrorMap());
             modelBuilder.Configurations.Add(new ProductMap());   
-            modelBuilder.Configurations.Add(new TaxMap());
-            modelBuilder.Configurations.Add(new TaxCategoryMap());
-            modelBuilder.Configurations.Add(new TaxDetailMap());
-            modelBuilder.Configurations.Add(new TaxTypeMap());
+            modelBuilder.Configurations.Add(new InvoiceMap());
+            modelBuilder.Configurations.Add(new CategoryMap());
+            modelBuilder.Configurations.Add(new InvoiceDetailMap());
+            modelBuilder.Configurations.Add(new TypeMap());
             modelBuilder.Configurations.Add(new TaxValueMap());
             modelBuilder.Configurations.Add(new UnitMap());
             modelBuilder.Configurations.Add(new UserMap());

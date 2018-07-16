@@ -12,11 +12,11 @@ namespace OHTTaxSupportApplication.Model.Models
 
         public int ID { get; set; }
         public string AccountCode { get; set; }
-        public int TaxCategoryID { get; set; }
+        public int CategoryID { get; set; }
         public int TaxValueID { get; set; }
         public string SH { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public virtual TaxCategory TaxCategory { get; set; }
+        public virtual Category Category { get; set; }
         public virtual TaxValue TaxValue { get; set; }
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }

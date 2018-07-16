@@ -8,13 +8,13 @@ namespace OHTTaxSupportApplication.Model.Models
         public TaxValue()
         {
             this.Accounts = new List<Account>();
-            this.Taxes = new List<Tax>();
+            this.Invoices = new List<Invoice>();
         }
 
         public int ID { get; set; }
         public double Value { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
-        public virtual ICollection<Tax> Taxes { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
     }
 }

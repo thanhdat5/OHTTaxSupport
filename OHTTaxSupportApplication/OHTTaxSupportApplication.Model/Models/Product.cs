@@ -7,7 +7,7 @@ namespace OHTTaxSupportApplication.Model.Models
     {
         public Product()
         {
-            this.TaxDetails = new List<TaxDetail>();
+            this.InvoiceDetails = new List<InvoiceDetail>();
         }
 
         public int ID { get; set; }
@@ -16,6 +16,6 @@ namespace OHTTaxSupportApplication.Model.Models
         public int UnitID { get; set; }
         public Nullable<int> UnitID2 { get; set; }
         public Nullable<bool> IsActive { get; set; }    
-        public virtual ICollection<TaxDetail> TaxDetails { get; set; }
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

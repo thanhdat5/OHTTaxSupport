@@ -60,11 +60,11 @@ namespace OHTTaxSupportApplication.Service
                 {
                     ID = m.ID,
                     AccountCode = m.AccountCode,
-                    TaxCategoryID = m.TaxCategoryID,
+                    CategoryID = m.CategoryID,
                     TaxValueID = m.TaxValueID,
                     SH = m.SH,
                     IsActive = m.IsActive ?? false,
-                    TaxCategory = m.TaxCategory.Category,
+                    Category = m.Category.CategoryName,
                     TaxValue = m.TaxValue.Value
                 }).ToList();
                 response.Result = result;
@@ -107,11 +107,11 @@ namespace OHTTaxSupportApplication.Service
                     {
                         ID = m.ID,
                         AccountCode = m.AccountCode,
-                        TaxCategoryID = m.TaxCategoryID,
+                        CategoryID = m.CategoryID,
                         TaxValueID = m.TaxValueID,
                         SH = m.SH,
                         IsActive = m.IsActive ?? false,
-                        TaxCategory = m.TaxCategory.Category,
+                        Category = m.Category.CategoryName,
                         TaxValue = m.TaxValue.Value
                     })
                     .ToList();
@@ -156,11 +156,11 @@ namespace OHTTaxSupportApplication.Service
                     var tempResult = _accountRepository.GetSingleById(id);
                     result.ID = tempResult.ID;
                     result.AccountCode = tempResult.AccountCode;
-                    result.TaxCategoryID = tempResult.TaxCategoryID;
+                    result.CategoryID = tempResult.CategoryID;
                     result.TaxValueID = tempResult.TaxValueID;
                     result.SH = tempResult.SH;
                     result.IsActive = tempResult.IsActive ?? false;
-                    result.TaxCategory = tempResult.TaxCategory.Category;
+                    result.Category = tempResult.Category.CategoryName;
                     result.TaxValue = tempResult.TaxValue.Value;
                     response.Result = result;
                 }

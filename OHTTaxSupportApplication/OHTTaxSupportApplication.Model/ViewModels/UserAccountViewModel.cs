@@ -11,7 +11,7 @@ namespace OHTTaxSupportApplication.Model.ViewModels
         public string AccountCode { get; set; }
         public string AccountSH { get; set; }
         public double AccountTaxVaue { get; set; }
-        public string AccountTaxCategory { get; set; }
+        public string AccountCategory { get; set; }
         public string UserName { get; set; }
         public string UserImage { get; set; }
         public string UserCompany { get; set; }

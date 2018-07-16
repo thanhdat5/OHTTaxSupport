@@ -97,7 +97,7 @@
                 <ul class="nav ace-nav">
                     <li class="light-blue">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" width="35" height="35" src="@user.Image" alt="@user.Fullname's Photo" />
+                            <img class="nav-user-photo" width="35" height="35" style="max-height:40px" src="@user.Image" />
                             <span class="user-info">
                                 <small>Welcome,</small>
                                 @user.Fullname
@@ -303,9 +303,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxCategories"
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Categories"
                              || ViewContext.RouteData.Values["Controller"].ToString() == "TaxValues"
-                             || ViewContext.RouteData.Values["Controller"].ToString() == "TaxTypes"
+                             || ViewContext.RouteData.Values["Controller"].ToString() == "Types"
                              || ViewContext.RouteData.Values["Controller"].ToString() == "Units"
                              || ViewContext.RouteData.Values["Controller"].ToString() == "Settings"
                                  ? "open active" : "")">
@@ -328,19 +328,19 @@
                             <b class="arrow"></b>
                         </li>
 
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxCategories"? "active" : "")">
-                            <a href="/TaxCategories">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Categories"? "active" : "")">
+                            <a href="/Categories">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Tax Categories
+                                Categories
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "TaxTypes"? "active" : "")">
-                            <a href="/TaxTypes">
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Types"? "active" : "")">
+                            <a href="/Types">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                Tax Types
+                                Types
                             </a>
 
                             <b class="arrow"></b>

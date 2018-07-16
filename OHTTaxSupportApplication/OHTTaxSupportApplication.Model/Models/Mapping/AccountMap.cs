@@ -25,15 +25,15 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
             this.ToTable("Account");
             this.Property(t => t.ID).HasColumnName("ID");
             this.Property(t => t.AccountCode).HasColumnName("AccountCode");
-            this.Property(t => t.TaxCategoryID).HasColumnName("TaxCategoryID");
+            this.Property(t => t.CategoryID).HasColumnName("CategoryID");
             this.Property(t => t.TaxValueID).HasColumnName("TaxValueID");
             this.Property(t => t.SH).HasColumnName("SH");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
 
             // Relationships
-            this.HasRequired(t => t.TaxCategory)
+            this.HasRequired(t => t.Category)
                 .WithMany(t => t.Accounts)
-                .HasForeignKey(d => d.TaxCategoryID);
+                .HasForeignKey(d => d.CategoryID);
             this.HasRequired(t => t.TaxValue)
                 .WithMany(t => t.Accounts)
                 .HasForeignKey(d => d.TaxValueID);

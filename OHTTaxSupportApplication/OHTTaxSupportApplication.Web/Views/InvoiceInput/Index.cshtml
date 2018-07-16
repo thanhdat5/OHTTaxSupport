@@ -3,6 +3,49 @@
     ViewBag.Title = "Input Invoice";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+    <style>
+        .invoice-manager .nav-tabs > li {
+            position: relative;
+        }
 
-<h2 class="text-success">// Todo</h2>
+            .invoice-manager .nav-tabs > li > a {
+                display: inline-block;
+                padding-left: 15px;
+                padding-right: 25px;
+            }
 
+            .invoice-manager .nav-tabs > li > span {
+                cursor: pointer;
+                position: absolute;
+                right: 0px;
+                top: 3px;
+                font-size: 18px;
+                color: #d15b47;
+                font-weight: bold;
+                padding-left: 10px;
+                padding-right: 10px;
+                z-index: 9;
+            }
+    </style>
+}
+<div class="invoice-manager">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="pull-right" style="position: relative;z-index: 100;">
+                <button type="button" id="" name="" onclick="showHistory()" class="btn btn-sm btn-default">History</button>&nbsp;
+                <button type="button" id="" name="" onclick="saveAll()" class="btn btn-sm btn-success">Save All</button>
+            </div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li>
+                    <a href="#" style="padding-right: 15px;background: #438eb9;color: #fff;border: 1px solid #438eb9;" class="add-invoice"><i class="fa fa-plus"></i>&nbsp;Add new</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/app/invoice-input.js"></script>
+}

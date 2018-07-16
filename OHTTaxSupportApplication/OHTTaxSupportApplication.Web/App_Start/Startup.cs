@@ -58,16 +58,16 @@ namespace OHTTaxSupportApplication.Web
             builder.RegisterAssemblyTypes(typeof(ProductRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(InvoiceRepository).Assembly)
                  .Where(t => t.Name.EndsWith("Repository"))
                  .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxCategoryRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CategoryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxDetailRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(InvoiceDetailRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxTypeRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(TypeRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterAssemblyTypes(typeof(TaxValueRepository).Assembly)
@@ -105,16 +105,16 @@ namespace OHTTaxSupportApplication.Web
             builder.RegisterAssemblyTypes(typeof(ProductService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(InvoiceService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxCategoryService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CategoryService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxDetailService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(InvoiceDetailService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TaxTypeService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(TypeService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
             builder.RegisterAssemblyTypes(typeof(TaxValueService).Assembly)

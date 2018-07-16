@@ -7,12 +7,12 @@ namespace OHTTaxSupportApplication.Model.Models
     {
         public Unit()
         {                                    
-            this.TaxDetails = new List<TaxDetail>();
+            this.InvoiceDetails = new List<InvoiceDetail>();
         }
 
         public int ID { get; set; }
         public string Value { get; set; }
         public Nullable<bool> IsActive { get; set; }             
-        public virtual ICollection<TaxDetail> TaxDetails { get; set; }
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

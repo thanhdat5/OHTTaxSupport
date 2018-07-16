@@ -171,19 +171,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\TaxDetailController.cs" />
+    <Compile Include="Api\InvoiceDetailController.cs" />
     <Compile Include="Api\UserController.cs" />
     <Compile Include="Api\UserAccountController.cs" />
     <Compile Include="Api\ProductController.cs" />
-    <Compile Include="Api\TaxController.cs" />
+    <Compile Include="Api\InvoiceController.cs" />
     <Compile Include="Api\DepartmentController.cs" />
     <Compile Include="Api\CustomerTypeController.cs" />
     <Compile Include="Api\CustomerController.cs" />
     <Compile Include="Api\CompanyController.cs" />
-    <Compile Include="Api\TaxCategoryController.cs" />
+    <Compile Include="Api\CategoryController.cs" />
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\UnitController.cs" />
-    <Compile Include="Api\TaxTypeController.cs" />
+    <Compile Include="Api\TypeController.cs" />
     <Compile Include="Api\TaxValueController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -201,9 +201,9 @@
     <Compile Include="Controllers\InvoiceInputController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\CustomerTypesController.cs" />
-    <Compile Include="Controllers\TaxTypesController.cs" />
+    <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Controllers\UnitsController.cs" />
-    <Compile Include="Controllers\TaxCategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\TaxValuesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -402,7 +402,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="AppSettings.config" />
-    <Content Include="ConnectionStrings.config" />
     <Content Include="Scripts\app\account.js" />
     <Content Include="Scripts\app\product.js" />
     <Content Include="Scripts\app\customer.js" />
@@ -411,10 +410,11 @@
     <Content Include="Scripts\app\profile.js" />
     <Content Include="Scripts\app\customer-type.js" />
     <Content Include="Scripts\app\company.js" />
-    <Content Include="Scripts\app\tax-type.js" />
+    <Content Include="Scripts\app\invoice-input.js" />
+    <Content Include="Scripts\app\type.js" />
     <Content Include="Scripts\app\unit.js" />
     <Content Include="Scripts\app\user-management.js" />
-    <Content Include="Scripts\app\tax-category.js" />
+    <Content Include="Scripts\app\category.js" />
     <Content Include="Scripts\app\login.js" />
     <Content Include="Scripts\app\tax-value.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -501,14 +501,14 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\TaxCategories\Index.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\InvoiceInput\Index.cshtml" />
     <Content Include="Views\BalanceScale\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Profile.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Units\Index.cshtml" />
-    <Content Include="Views\TaxTypes\Index.cshtml" />
+    <Content Include="Views\Types\Index.cshtml" />
     <Content Include="Views\CustomerTypes\Index.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />

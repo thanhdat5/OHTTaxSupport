@@ -65,7 +65,7 @@ namespace OHTTaxSupportApplication.Service
                     AccountCode = m.Account.AccountCode,
                     AccountSH = m.Account.SH,
                     AccountTaxVaue = m.Account.TaxValue.Value,
-                    AccountTaxCategory = m.Account.TaxCategory.Category,
+                    AccountCategory = m.Account.Category.CategoryName,
                     UserName = m.User.Username,
                     UserImage = m.User.Username,
                     UserCompany = m.User.Fullname,
@@ -116,7 +116,7 @@ namespace OHTTaxSupportApplication.Service
                         AccountCode = m.Account.AccountCode,
                         AccountSH = m.Account.SH,
                         AccountTaxVaue = m.Account.TaxValue.Value,
-                        AccountTaxCategory = m.Account.TaxCategory.Category,
+                        AccountCategory = m.Account.Category.CategoryName,
                         UserName = m.User.Username,
                         UserImage = m.User.Username,
                         UserCompany = m.User.Fullname,
@@ -169,7 +169,7 @@ namespace OHTTaxSupportApplication.Service
                     result.AccountCode = tempResult.Account.AccountCode;
                     result.AccountSH = tempResult.Account.SH;
                     result.AccountTaxVaue = tempResult.Account.TaxValue.Value;
-                    result.AccountTaxCategory = tempResult.Account.TaxCategory.Category;
+                    result.AccountCategory = tempResult.Account.Category.CategoryName;
                     result.UserName = tempResult.User.Username;
                     result.UserImage = tempResult.User.Username;
                     result.UserCompany = tempResult.User.Fullname;
