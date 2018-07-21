@@ -25,13 +25,14 @@ namespace OHTTaxSupportApplication.Data.Repositories
                 {
                     ID = m.ID,
                     InvoiceID = m.InvoiceID,
-                    ProductID = m.ProductID,
-                    UnitID = m.UnitID,
-                    Value = m.Value,
-                    Quanlity = m.Quanlity,
+                    Value = decimal.Parse(m.Value.ToString()).ToString("###,##"),
                     IsActive = m.IsActive ?? false,
-                    Product = m.Product.ProductName,
-                    Unit = m.Unit.Value
+                    DepartmentID = m.DepartmentID,
+                    CategoryID = m.CategoryID,
+                    TaxValueID = m.TaxValueID,
+                    TaxValue = DbContext.TaxValues.Find(m.TaxValueID).Value.ToString(),
+                    Department = DbContext.Departments.Find(m.DepartmentID).DepartmentName,
+                    Category = DbContext.Categories.Find(m.CategoryID).CategoryName
                 }).ToList();
         }
     }

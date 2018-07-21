@@ -16,5 +16,6 @@ namespace OHTTaxSupportApplication.Model.Models
         public Nullable<bool> IsActive { get; set; }
         public virtual ICollection<Account> Accounts { get; set; }
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
     }
 }

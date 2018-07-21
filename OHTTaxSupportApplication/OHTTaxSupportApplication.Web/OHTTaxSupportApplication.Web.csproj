@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BalanceScaleController.cs" />
@@ -403,6 +404,8 @@
     </Content>
     <Content Include="AppSettings.config" />
     <Content Include="Scripts\app\account.js" />
+    <Content Include="Scripts\app\invoice.js" />
+    <Content Include="Scripts\app\invoice-input-v2.js" />
     <Content Include="Scripts\app\product.js" />
     <Content Include="Scripts\app\customer.js" />
     <Content Include="Scripts\app\department.js" />
@@ -516,10 +519,13 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\UserAccounts\Index.cshtml" />
+    <Content Include="Views\InvoiceInput\InvoiceInputV2.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Invoice\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

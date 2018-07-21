@@ -33,13 +33,17 @@ namespace OHTTaxSupportApplication.Service
     {
         private IInvoiceRepository _InvoiceRepository;
         private IInvoiceDetailRepository _InvoiceDetailRepository;
+        private ICustomerRepository _CustomerRepository;
+        private ICategoryRepository _CategoryRepository;
 
         private IUnitOfWork _unitOfWork;
 
-        public InvoiceService(IInvoiceRepository InvoiceRepository, IInvoiceDetailRepository InvoiceDetailRepository, IUnitOfWork unitOfWork)
+        public InvoiceService(IInvoiceRepository InvoiceRepository, IInvoiceDetailRepository InvoiceDetailRepository, ICustomerRepository CustomerRepository, ICategoryRepository CategoryRepository, IUnitOfWork unitOfWork)
         {
             this._InvoiceRepository = InvoiceRepository;
             this._InvoiceDetailRepository = InvoiceDetailRepository;
+            this._CustomerRepository = CustomerRepository;
+            this._CategoryRepository = CategoryRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -49,7 +53,7 @@ namespace OHTTaxSupportApplication.Service
         /// <returns></returns>
         public ApiResponseViewModel GetAll()
         {
-            var result = new List<InvoiceViewModel>();
+            var result = new List<InvoiceDetailViewModel>();
             var response = new ApiResponseViewModel
             {
                 Code = CommonConstants.ApiResponseSuccessCode,
@@ -59,20 +63,30 @@ namespace OHTTaxSupportApplication.Service
 
             try
             {
-                result = _InvoiceRepository.GetMulti(m => m.IsActive == true).Select(m => new InvoiceViewModel
+                var invoiceDetails = _InvoiceDetailRepository.GetMulti(m => m.IsActive == true);
+                foreach (var idetail in invoiceDetails)
                 {
-                    ID = m.ID,
-                    TypeID = m.TypeID,
-                    CreatedDate = m.CreatedDate,
-                    CustomerID = m.CustomerID,
-                    TaxValueID = m.TaxValueID,
-                    Status = m.Status,
-                    Value = m.Value,
-                    IsActive = m.IsActive ?? false,
-                    Type = m.Type.TypeName,
-                    TaxValue = m.TaxValue.Value,
-                    InvoiceDetails = _InvoiceDetailRepository.GetListInvoiceDetailsByInvoiceID(m.ID)
-                }).ToList();
+                    var invoice = _InvoiceRepository.GetMulti(m => m.IsActive == true && m.ID == idetail.InvoiceID).FirstOrDefault();
+                    if (invoice != null)
+                    {
+                        var obj = new InvoiceDetailViewModel
+                        {
+                            ID = invoice.ID,
+                            CreateDate = invoice.CreatedDate.ToShortDateString(),
+                            CustomerID = int.Parse(invoice.CustomerID.ToString()),
+                            Customer = _CustomerRepository.GetSingleById(int.Parse(invoice.CustomerID.ToString())).CustomerName,
+                            Category = idetail.Category.CategoryName,
+                            InOut = invoice.InOut ?? false,
+                            Status = invoice.Status,
+                            Value = decimal.Parse(idetail.Value.ToString()).ToString("###,##"),
+                            IsActive = idetail.IsActive ?? false,
+                            TaxValue = idetail.TaxValue.Value.ToString()
+                            //InvoiceDetails = _InvoiceDetailRepository.GetListInvoiceDetailsByInvoiceID(idetail.ID)
+                        };
+                        result.Add(obj);
+                    }
+
+                }
                 response.Result = result;
             }
             catch (Exception ex)
@@ -112,15 +126,12 @@ namespace OHTTaxSupportApplication.Service
                     .Select(m => new InvoiceViewModel
                     {
                         ID = m.ID,
-                        TypeID = m.TypeID,
                         CreatedDate = m.CreatedDate != null ? m.CreatedDate : DateTime.Now,
                         CustomerID = m.CustomerID,
-                        TaxValueID = m.TaxValueID,
+                        InOut = m.InOut,
                         Status = m.Status,
                         IsActive = m.IsActive ?? false,
-                        Type = m.Type.TypeName,
                         Value = m.Value,
-                        TaxValue = m.TaxValue.Value,
                         InvoiceDetails = _InvoiceDetailRepository.GetListInvoiceDetailsByInvoiceID(m.ID)
                     })
                     .ToList();
@@ -164,14 +175,11 @@ namespace OHTTaxSupportApplication.Service
                 {
                     var tempResult = _InvoiceRepository.GetSingleById(id);
                     result.ID = tempResult.ID;
-                    result.TypeID = tempResult.TypeID;
                     result.CreatedDate = tempResult.CreatedDate;
                     result.CustomerID = tempResult.CustomerID;
-                    result.TaxValueID = tempResult.TaxValueID;
+                    result.InOut = tempResult.InOut;
                     result.Status = tempResult.Status;
                     result.IsActive = tempResult.IsActive ?? false;
-                    result.Type = tempResult.Type.TypeName;
-                    result.TaxValue = tempResult.TaxValue.Value;
                     result.Value = tempResult.Value;
                     result.InvoiceDetails = _InvoiceDetailRepository.GetListInvoiceDetailsByInvoiceID(result.ID);
                     response.Result = result;
@@ -230,7 +238,7 @@ namespace OHTTaxSupportApplication.Service
         /// <returns></returns>
         public ApiResponseViewModel SaveAll(List<InvoiceInput> lst)
         {
-            var result = new Invoice();
+            var result = new List<InvoiceDetail>();
             var response = new ApiResponseViewModel
             {
                 Code = CommonConstants.ApiResponseSuccessCode,
@@ -238,19 +246,43 @@ namespace OHTTaxSupportApplication.Service
                 Result = null
             };
 
-            //try
-            //{
-            //    obj.CreatedDate = DateTime.Now;
-            //    result = _InvoiceRepository.Add(obj);
-            //    _unitOfWork.Commit();
-            //    response.Message = CommonConstants.AddSuccess;
-            //    response.Result = result;
-            //}
-            //catch (Exception ex)
-            //{
-            //    response.Code = CommonConstants.ApiResponseExceptionCode;
-            //    response.Message = CommonConstants.ErrorMessage + " " + ex.Message;
-            //}
+            try
+            {
+                foreach (var item in lst)
+                {
+                    decimal totalValue = 0;
+                    var customerID = 0;
+                    foreach (var sub in item.details)
+                    {
+                        var obj = new InvoiceDetail();
+                        obj.ID = 0;
+                        obj.InvoiceID = item.id;
+                        obj.Value = sub.Value;
+                        obj.DepartmentID = sub.DepartmentID;
+                        obj.CategoryID = sub.CategoryID;
+                        obj.TaxValueID = sub.TaxValue;
+                        obj.IsActive = true;
+                        obj.TaxValueID = sub.TaxValue;
+                        result.Add(_InvoiceDetailRepository.Add(obj));
+
+                        totalValue += sub.Value;
+                        customerID = sub.CustomerID;
+                    }
+                    var invoice = _InvoiceRepository.GetSingleById(item.id);
+                    invoice.Value = totalValue;
+                    invoice.CustomerID = customerID;
+                    invoice.IsActive = true;
+                    _InvoiceRepository.Update(invoice);
+                }
+                _unitOfWork.Commit();
+                response.Message = CommonConstants.AddSuccess;
+                response.Result = result;
+            }
+            catch (Exception ex)
+            {
+                response.Code = CommonConstants.ApiResponseExceptionCode;
+                response.Message = CommonConstants.ErrorMessage + " " + ex.Message;
+            }
             return response;
 
         }

@@ -184,10 +184,18 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
-                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "InvoiceInput" ? "active" : "")">
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoiceInputIndex" ? "active" : "")">
                     <a href="/InvoiceInput">
                         <i class="menu-icon fa fa-indent"></i>
                         <span class="menu-text"> Invoice Input </span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoiceInputInvoiceInputV2" ? "active" : "")">
+                    <a href="/InvoiceInput/InvoiceInputV2">
+                        <i class="menu-icon fa fa-indent"></i>
+                        <span class="menu-text"> Invoice Input v2.0</span>
                     </a>
 
                     <b class="arrow"></b>

@@ -63,18 +63,14 @@ namespace OHTTaxSupportApplication.Service
                 {
                     ID = m.ID,
                     InvoiceID = m.InvoiceID,
-                    ProductID = m.ProductID,
-                    UnitID = m.UnitID,
-                    Value = m.Value,
-                    Quanlity = m.Quanlity,
+                    Value = decimal.Parse(m.Value.ToString()).ToString("###,##"),
                     IsActive = m.IsActive ?? false,
-                    Product = m.Product.ProductName,
-                    InOut = m.InOut,
                     DepartmentID = m.DepartmentID,
                     Department = m.Department.DepartmentName,
                     CategoryID = m.CategoryID,
                     Category = m.Category.CategoryName,
-                    Unit = m.Unit.Value
+                    TaxValueID = m.TaxValueID,
+                    TaxValue = m.TaxValue.Value.ToString()
                 }).ToList();
                 response.Result = result;
             }
@@ -115,19 +111,14 @@ namespace OHTTaxSupportApplication.Service
                     .Select(m => new InvoiceDetailViewModel
                     {
                         ID = m.ID,
-                        InvoiceID = m.InvoiceID,
-                        ProductID = m.ProductID,
-                        UnitID = m.UnitID,
-                        Value = m.Value,
-                        Quanlity = m.Quanlity,
+                        Value = decimal.Parse(m.Value.ToString()).ToString("###,##"),
                         IsActive = m.IsActive ?? false,
-                        Product = m.Product.ProductName,
-                        InOut = m.InOut,
                         DepartmentID = m.DepartmentID,
                         Department = m.Department.DepartmentName,
                         CategoryID = m.CategoryID,
                         Category = m.Category.CategoryName,
-                        Unit = m.Unit.Value
+                        TaxValueID = m.TaxValueID,
+                        TaxValue = m.TaxValue.Value.ToString(),
                     })
                     .ToList();
 
@@ -171,18 +162,14 @@ namespace OHTTaxSupportApplication.Service
                     var tempResult = _InvoiceDetailRepository.GetSingleById(id);
                     result.ID = tempResult.ID;
                     result.InvoiceID = tempResult.InvoiceID;
-                    result.ProductID = tempResult.ProductID;
-                    result.UnitID = tempResult.UnitID;
-                    result.Value = tempResult.Value;
-                    result.Quanlity = tempResult.Quanlity;
+                    result.Value = decimal.Parse(tempResult.Value.ToString()).ToString("###,##");
                     result.IsActive = tempResult.IsActive ?? false;
-                    result.Product = tempResult.Product.ProductName;
-                    result.Unit = tempResult.Unit.Value;
-                    result.InOut = tempResult.InOut;
                     result.DepartmentID = tempResult.DepartmentID;
                     result.Department = tempResult.Department.DepartmentName;
                     result.CategoryID = tempResult.CategoryID;
                     result.Category = tempResult.Category.CategoryName;
+                    result.TaxValueID = tempResult.TaxValueID;
+                    result.TaxValue = tempResult.TaxValue.Value.ToString();
                     response.Result = result;
                 }
                 else
@@ -227,19 +214,14 @@ namespace OHTTaxSupportApplication.Service
                         var result = new InvoiceDetailViewModel();
                         result.ID = tempResult.ID;
                         result.InvoiceID = tempResult.InvoiceID;
-                        result.ProductID = tempResult.ProductID;
-                        result.UnitID = tempResult.UnitID;
-                        result.Value = tempResult.Value;
-                        result.Quanlity = tempResult.Quanlity;
+                        result.Value = decimal.Parse(tempResult.Value.ToString()).ToString("###,##");
                         result.IsActive = tempResult.IsActive ?? false;
-                        result.Product = tempResult.Product != null ? tempResult.Product.ProductName : "";
-                        result.Unit = tempResult.Unit != null ? tempResult.Unit.Value : "";
-                        result.InOut = tempResult.InOut;
                         result.DepartmentID = tempResult.DepartmentID;
                         result.Department = tempResult.Department != null ? tempResult.Department.DepartmentName : "";
                         result.CategoryID = tempResult.CategoryID;
                         result.Category = tempResult.Category != null ? tempResult.Category.CategoryName : "";
-                        result.TaxValue = invoice.TaxValueID != null ? invoice.TaxValue.Value.ToString() : "0";
+                        result.TaxValueID = tempResult.TaxValueID;
+                        result.TaxValue = tempResult.TaxValue != null ? tempResult.TaxValue.Value.ToString() : "";
                         lstResult.Add(result);
                     }
                     response.Result = lstResult;

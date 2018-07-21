@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace OHTTaxSupportApplication.Web.Controllers
 {
-    public class InvoiceInputController : Controller
+    public class InvoicesController : Controller
     {
-        // GET: InvoiceInput
+        // GET: Invoice
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult InvoiceInputV2()
         {
             return View();
         }
