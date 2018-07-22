@@ -13,6 +13,7 @@ namespace OHTTaxSupportApplication.Service
     {
 
         ApiResponseViewModel GetAll();
+        ApiResponseViewModel Filter(string fromDate, string toDate);
 
         ApiResponseViewModel GetAllWithPagging(int? page, int pageSize);
 
@@ -67,6 +68,63 @@ namespace OHTTaxSupportApplication.Service
                 foreach (var idetail in invoiceDetails)
                 {
                     var invoice = _InvoiceRepository.GetMulti(m => m.IsActive == true && m.ID == idetail.InvoiceID).FirstOrDefault();
+                    if (invoice != null)
+                    {
+                        var obj = new InvoiceDetailViewModel
+                        {
+                            ID = invoice.ID,
+                            CreateDate = invoice.CreatedDate.ToShortDateString(),
+                            CustomerID = int.Parse(invoice.CustomerID.ToString()),
+                            Customer = _CustomerRepository.GetSingleById(int.Parse(invoice.CustomerID.ToString())).CustomerName,
+                            Category = idetail.Category.CategoryName,
+                            InOut = invoice.InOut ?? false,
+                            Status = invoice.Status,
+                            Value = decimal.Parse(idetail.Value.ToString()).ToString("###,##"),
+                            IsActive = idetail.IsActive ?? false,
+                            TaxValue = idetail.TaxValue.Value.ToString()
+                            //InvoiceDetails = _InvoiceDetailRepository.GetListInvoiceDetailsByInvoiceID(idetail.ID)
+                        };
+                        result.Add(obj);
+                    }
+
+                }
+                response.Result = result;
+            }
+            catch (Exception ex)
+            {
+                response.Code = CommonConstants.ApiResponseExceptionCode;
+                response.Message = CommonConstants.ErrorMessage + " " + ex.Message;
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// Get all Invoice
+        /// </summary>
+        /// <returns></returns>
+        public ApiResponseViewModel Filter(string fromDate, string toDate)
+        {
+            var result = new List<InvoiceDetailViewModel>();
+            var response = new ApiResponseViewModel
+            {
+                Code = CommonConstants.ApiResponseSuccessCode,
+                Message = null,
+                Result = null
+            };
+
+            try
+            {
+                var invoiceDetails = _InvoiceDetailRepository.GetMulti(m => m.IsActive == true);
+                var fromDateValue = !string.IsNullOrEmpty(fromDate) ? DateTime.Parse(fromDate) : DateTime.Now;
+                var toDateValue = !string.IsNullOrEmpty(toDate) ? DateTime.Parse(toDate) : DateTime.Now;
+                foreach (var idetail in invoiceDetails)
+                {
+                    var invoice = _InvoiceRepository.GetMulti(
+                            m => m.IsActive == true
+                            && m.ID == idetail.InvoiceID
+                            && (string.IsNullOrEmpty(fromDate.Trim()) || m.CreatedDate >= fromDateValue)
+                            && (string.IsNullOrEmpty(toDate.Trim()) || m.CreatedDate <= toDateValue)
+                          ).FirstOrDefault();
                     if (invoice != null)
                     {
                         var obj = new InvoiceDetailViewModel

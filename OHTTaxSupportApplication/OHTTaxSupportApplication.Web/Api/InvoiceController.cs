@@ -33,6 +33,13 @@ namespace OHTTaxSupportApplication.Web.Api
             return _invoiceService.GetAll();
         }
 
+        [Route("filter")]
+        [HttpGet]
+        public ApiResponseViewModel Filter(string fromDate, string toDate)
+        {
+            return _invoiceService.Filter(fromDate, toDate);
+        }
+
         [Route("getallwithpaging")]
         [HttpGet]
         public ApiResponseViewModel GetAllWithPagging(int page, int pageSize)

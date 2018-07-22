@@ -228,6 +228,7 @@
     <Content Include="Content\Images\logo-login.png" />
     <Content Include="Content\Images\success-img.png" />
     <Content Include="Content\Images\user-logged-bg.png" />
+    <Content Include="Content\printModal.css" />
     <Content Include="Content\Template\ace-master\assets\avatars\avatar.png" />
     <Content Include="Content\Template\ace-master\assets\avatars\avatar1.png" />
     <Content Include="Content\Template\ace-master\assets\avatars\avatar2.png" />
