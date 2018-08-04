@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using OHTTaxSupportApplication.Common;
 using OHTTaxSupportApplication.Model.Models;
 using OHTTaxSupportApplication.Model.ViewModels;
 using OHTTaxSupportApplication.Service;
@@ -32,6 +33,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpGet]
         public ApiResponseViewModel GetAll()
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.GetAll();
         }
 
@@ -39,6 +44,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpGet]
         public ApiResponseViewModel GetAllWithPagging(int page, int pageSize)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.GetAllWithPagging(page, pageSize);
         }
 
@@ -46,6 +55,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpGet]
         public ApiResponseViewModel GetById(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.GetById(id);
         }
 
@@ -53,6 +66,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpGet]
         public ApiResponseViewModel GetProfile()
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             var userLogged = (UserViewModel)System.Web.HttpContext.Current.Session["UserLogged"];
             return _userService.GetById(userLogged.ID);
         }
@@ -61,6 +78,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpPost]
         public ApiResponseViewModel Create(User obj)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.Add(obj);
         }
 
@@ -68,6 +89,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpPost]
         public ApiResponseViewModel Update(User obj)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.Update(obj);
         }
 
@@ -75,6 +100,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpPost]
         public ApiResponseViewModel Delete(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.Delete(id);
         }
 
@@ -82,6 +111,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpPost]
         public ApiResponseViewModel SetInActive(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _userService.SetInActive(id);
         }
 
@@ -101,6 +134,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [System.Web.Http.HttpPost]
         public ApiResponseViewModel UploadAvatar()
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             var result = "";
             try
             {

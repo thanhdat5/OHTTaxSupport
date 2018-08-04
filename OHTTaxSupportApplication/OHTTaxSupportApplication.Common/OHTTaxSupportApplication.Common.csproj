@@ -49,5 +49,11 @@
     <Compile Include="StringHelper.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OHTTaxSupportApplication.Model\OHTTaxSupportApplication.Model.csproj">
+      <Project>{9ED0449B-5404-4777-804D-1E82ECF5FAAD}</Project>
+      <Name>OHTTaxSupportApplication.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

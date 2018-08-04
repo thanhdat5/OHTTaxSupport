@@ -96,14 +96,14 @@ function viewItem(id) {
     ohtCallServiceToGet(urlGetById + id, loadItemSuccess);
 }
 $('#btnReport').click(function () {
-    var fromDate = $('#txtFromDate').val();
-    var toDate = $('#txtToDate').val();
-    $('#lblFromDate').text(fromDate);
-    $('#lblToDate').text(toDate);
-    if (validateFilter(fromDate, toDate)) {
-        $('#oht-result-data').html('<tr class="oht-loading"><td colspan="7">Loading...</td></tr>');
-        ohtCallServiceToGet(urlGetSearch + "?fromDate=" + fromDate + "&toDate=" + toDate, exportData);
-    }
+    //var fromDate = $('#txtFromDate').val();
+    //var toDate = $('#txtToDate').val();
+    //$('#lblFromDate').text(fromDate);
+    //$('#lblToDate').text(toDate);
+    //if (validateFilter(fromDate, toDate)) {
+    //    $('#oht-result-data').html('<tr class="oht-loading"><td colspan="7">Loading...</td></tr>');
+    //    ohtCallServiceToGet(urlGetSearch + "?fromDate=" + fromDate + "&toDate=" + toDate, exportData);
+    //}
 });
 
 function exportData(data) {

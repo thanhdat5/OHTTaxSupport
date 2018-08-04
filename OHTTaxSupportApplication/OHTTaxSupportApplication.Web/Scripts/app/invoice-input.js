@@ -699,7 +699,7 @@ function saveAll() {
 }
 
 function showHistory() {
-    window.location = "/Invoices";
+    window.location = "/Export";
 }
 
 function totalNET(invoiceID) {

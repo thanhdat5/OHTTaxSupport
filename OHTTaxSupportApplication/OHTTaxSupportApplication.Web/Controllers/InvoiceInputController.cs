@@ -18,5 +18,10 @@ namespace OHTTaxSupportApplication.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Report()
+        {
+            return View();
+        }
     }
 }

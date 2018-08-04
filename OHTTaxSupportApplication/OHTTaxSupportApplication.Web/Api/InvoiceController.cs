@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
+using OHTTaxSupportApplication.Common;
 using OHTTaxSupportApplication.Model.Models;
 using OHTTaxSupportApplication.Model.ViewModels;
 using OHTTaxSupportApplication.Service;
@@ -30,6 +32,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpGet]
         public ApiResponseViewModel GetAll()
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.GetAll();
         }
 
@@ -37,6 +43,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpGet]
         public ApiResponseViewModel Filter(string fromDate, string toDate)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.Filter(fromDate, toDate);
         }
 
@@ -44,6 +54,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpGet]
         public ApiResponseViewModel GetAllWithPagging(int page, int pageSize)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.GetAllWithPagging(page, pageSize);
         }
 
@@ -51,6 +65,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpGet]
         public ApiResponseViewModel GetById(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.GetById(id);
         }
 
@@ -58,6 +76,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpPost]
         public ApiResponseViewModel Create(Invoice obj)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.Add(obj);
         }
 
@@ -65,6 +87,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpPost]
         public ApiResponseViewModel SaveAll(List<InvoiceInput> lst)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.SaveAll(lst);
         }
 
@@ -72,6 +98,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpPost]
         public ApiResponseViewModel Update(Invoice obj)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.Update(obj);
         }
 
@@ -79,6 +109,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpPost]
         public ApiResponseViewModel Delete(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.Delete(id);
         }
 
@@ -86,6 +120,10 @@ namespace OHTTaxSupportApplication.Web.Api
         [HttpPost]
         public ApiResponseViewModel SetInActive(int id)
         {
+            if (HttpContext.Current.Session["UserLogged"] == null)
+            {
+                return CommonConstants.accessDenied;
+            }
             return _invoiceService.SetInActive(id);
         }
     }

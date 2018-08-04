@@ -122,8 +122,10 @@ namespace OHTTaxSupportApplication.Service
                     var invoice = _InvoiceRepository.GetMulti(
                             m => m.IsActive == true
                             && m.ID == idetail.InvoiceID
-                            && (string.IsNullOrEmpty(fromDate.Trim()) || m.CreatedDate >= fromDateValue)
-                            && (string.IsNullOrEmpty(toDate.Trim()) || m.CreatedDate <= toDateValue)
+                             && (m.CreatedDate >= fromDateValue)
+                            && (m.CreatedDate <= toDateValue)
+                            //&& (string.IsNullOrEmpty(fromDate.Trim()) || m.CreatedDate >= fromDateValue)
+                            //&& (string.IsNullOrEmpty(toDate.Trim()) || m.CreatedDate <= toDateValue)
                           ).FirstOrDefault();
                     if (invoice != null)
                     {

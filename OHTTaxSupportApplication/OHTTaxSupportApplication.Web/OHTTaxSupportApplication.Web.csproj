@@ -405,6 +405,8 @@
     </Content>
     <Content Include="AppSettings.config" />
     <Content Include="Scripts\app\account.js" />
+    <Content Include="Scripts\app\loader.js" />
+    <Content Include="Scripts\app\reports.js" />
     <Content Include="Scripts\app\invoice.js" />
     <Content Include="Scripts\app\invoice-input-v2.js" />
     <Content Include="Scripts\app\product.js" />
@@ -522,6 +524,7 @@
     <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\InvoiceInput\InvoiceInputV2.cshtml" />
     <Content Include="Views\Invoices\Index.cshtml" />
+    <Content Include="Views\InvoiceInput\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Libs\" />

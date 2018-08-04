@@ -184,6 +184,14 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoiceInputInvoiceInputV2" ? "active" : "")">
+                    <a href="/InvoiceInput/InvoiceInputV2">
+                        <i class="menu-icon fa fa-indent"></i>
+                        <span class="menu-text"> Invoice Input</span>
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
                 <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoicesIndex" ? "active" : "")">
                     <a href="/Invoices">
                         <i class="menu-icon fa fa-barcode"></i>
@@ -192,10 +200,10 @@
 
                     <b class="arrow"></b>
                 </li>
-                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoiceInputInvoiceInputV2" ? "active" : "")">
-                    <a href="/InvoiceInput/InvoiceInputV2">
-                        <i class="menu-icon fa fa-indent"></i>
-                        <span class="menu-text"> Invoice Input v2.0</span>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() + ViewContext.RouteData.Values["Action"].ToString() == "InvoicesReport" ? "active" : "")">
+                    <a href="/InvoiceInput/Report">
+                        <i class="menu-icon fa fa-bar-chart-o"></i>
+                        <span class="menu-text"> Reports</span>
                     </a>
 
                     <b class="arrow"></b>

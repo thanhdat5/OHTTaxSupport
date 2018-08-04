@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OHTTaxSupportApplication.Model.ViewModels;
+using System;
 
 namespace OHTTaxSupportApplication.Common
 {
@@ -32,5 +33,13 @@ namespace OHTTaxSupportApplication.Common
 
         public const string ErrorMessage = "Some error occurred.";
         public const string NotFoundMessage = "Data not found.";
+
+
+        public static ApiResponseViewModel accessDenied = new ApiResponseViewModel
+        {
+            Code = 999,
+            Message = "Access Denied.",
+            Result = null
+        };
     }
 }

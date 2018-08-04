@@ -73,19 +73,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2014 19:33:56</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Common.dll">
-      <publishTime>07/22/2018 13:32:26</publishTime>
+      <publishTime>08/04/2018 13:46:00</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Common.pdb">
-      <publishTime>07/22/2018 13:32:26</publishTime>
+      <publishTime>08/04/2018 13:46:00</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Data.dll">
-      <publishTime>07/22/2018 13:32:30</publishTime>
+      <publishTime>08/04/2018 13:46:02</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Data.dll.config">
       <publishTime>07/13/2018 00:34:02</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Data.pdb">
-      <publishTime>07/22/2018 13:32:30</publishTime>
+      <publishTime>08/04/2018 13:46:02</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Model.dll">
       <publishTime>07/22/2018 13:32:26</publishTime>
@@ -97,16 +97,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/22/2018 13:32:26</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Service.dll">
-      <publishTime>07/22/2018 17:12:08</publishTime>
+      <publishTime>08/04/2018 13:46:02</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Service.pdb">
-      <publishTime>07/22/2018 17:12:08</publishTime>
+      <publishTime>08/04/2018 13:46:02</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Web.dll">
-      <publishTime>07/22/2018 17:12:18</publishTime>
+      <publishTime>08/04/2018 13:46:11</publishTime>
     </File>
     <File Include="bin/OHTTaxSupportApplication.Web.pdb">
-      <publishTime>07/22/2018 17:12:18</publishTime>
+      <publishTime>08/04/2018 13:46:11</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>11/13/2012 12:19:34</publishTime>
@@ -793,10 +793,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/22/2018 01:47:08</publishTime>
     </File>
     <File Include="Scripts/app/invoice-input.js">
-      <publishTime>07/17/2018 05:29:17</publishTime>
+      <publishTime>08/04/2018 07:40:52</publishTime>
     </File>
     <File Include="Scripts/app/invoice.js">
-      <publishTime>07/22/2018 02:18:50</publishTime>
+      <publishTime>08/04/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Scripts/app/loader.js">
+      <publishTime>08/04/2018 12:39:46</publishTime>
     </File>
     <File Include="Scripts/app/login.js">
       <publishTime>06/17/2018 23:38:47</publishTime>
@@ -806,6 +809,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/app/profile.js">
       <publishTime>06/19/2018 16:36:27</publishTime>
+    </File>
+    <File Include="Scripts/app/reports.js">
+      <publishTime>08/04/2018 13:27:10</publishTime>
     </File>
     <File Include="Scripts/app/tax-category.js">
       <publishTime>06/19/2018 17:09:50</publishTime>
@@ -981,8 +987,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/InvoiceInput/InvoiceInputV2.cshtml">
       <publishTime>07/22/2018 00:00:34</publishTime>
     </File>
+    <File Include="Views/InvoiceInput/Report.cshtml">
+      <publishTime>08/04/2018 12:40:34</publishTime>
+    </File>
     <File Include="Views/Invoices/Index.cshtml">
-      <publishTime>07/22/2018 17:07:26</publishTime>
+      <publishTime>08/04/2018 12:00:04</publishTime>
     </File>
     <File Include="Views/Products/Index.cshtml">
       <publishTime>06/19/2018 18:18:48</publishTime>
@@ -994,7 +1003,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/17/2018 23:38:47</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/22/2018 15:42:55</publishTime>
+      <publishTime>08/04/2018 11:58:03</publishTime>
     </File>
     <File Include="Views/TaxCategories/Index.cshtml">
       <publishTime>06/19/2018 17:19:01</publishTime>
