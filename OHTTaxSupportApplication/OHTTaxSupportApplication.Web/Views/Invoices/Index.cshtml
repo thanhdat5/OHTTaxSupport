@@ -70,15 +70,14 @@
                     <div class="table-reponsive">
                         <table class="table table-bordered">
                             <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                    <th>In/Out</th>
-                                    <th>Customer</th>
-                                    <th>Total NET.€</th>
-                                    <th>Tax value</th>
-                                    <th class="oht-th-action">Action</th>
-                                </tr>
+								<tr>
+									@*<th>ID</th>*@
+									<th>Invoice #</th>
+									<th>Customer</th>
+									<th>In/Out</th>
+									<th>Tax value</th>
+									<th>Total NET.€</th>
+								</tr>
                             </thead>
                             <tbody id="oht-result-data"></tbody>
                         </table>
@@ -92,6 +91,14 @@
 
 @section styles{
     <link href="~/Content/printModal.css" rel="stylesheet" />
+	<style>
+		.th-has-value {
+			background-color: #f5f5de;
+		}
+		.th-has-value2 {
+			background-color: #f3f3f3;
+		}
+	</style>
 }
 
 @section scripts{

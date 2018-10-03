@@ -8,7 +8,8 @@ namespace OHTTaxSupportApplication.Model.ViewModels
     {
         public int ID { get; set; }
         public int InvoiceID { get; set; }
-        public string Value { get; set; }
+		public string InvoiceCode { get; set; }
+		public string Value { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public int DepartmentID { get; set; }
         public string Department { get; set; }

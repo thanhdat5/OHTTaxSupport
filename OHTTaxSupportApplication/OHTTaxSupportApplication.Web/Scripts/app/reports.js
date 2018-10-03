@@ -145,7 +145,7 @@ function searchDataSuccess(data) {
 
             rs += '<tr><th>Revenue</th><td>' + dtht.toLocaleString() + ' € (Total)</td></tr><tr><td class="text-right">Revenue domestic (19%)</td><td>' + dttn19.toLocaleString() + ' €</td></tr><tr><td class="text-right">Revenue domestic (0%)</td><td>' + dttn0.toLocaleString() + ' €</td></tr><tr><td class="text-right">Revenue overseas (7%)</td><td>' + dtnn7.toLocaleString() + ' €</td></tr>';
 
-            rs += '<tr><th>Result (vari.)</th><td>' + (cpht - dtht).toLocaleString() + ' €</td></tr>';
+			rs += '<tr><th>Result (vari.)</th><td>' + (dtht - cpht).toLocaleString() + ' €</td></tr>';
 
             $('#report-content').html(rs);
 

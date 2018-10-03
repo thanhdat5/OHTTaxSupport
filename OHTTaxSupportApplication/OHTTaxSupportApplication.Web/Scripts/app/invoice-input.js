@@ -261,7 +261,7 @@ $(function () {
                     //###################################################
                     tabContent += "<div class='row'>";
                     tabContent += "<div class='col-md-3 col-sm-6'>";
-                    tabContent += "<div class='form-group'><label>Date Created</label><input type='date' disabled='disabled' class='form-control' id='txtDateCreated-" + id + "' name='txtDateCreated-" + id + "' /><span class='text-danger' id='txtDateCreated-" + id + "_error'></span></div>";
+                    tabContent += "<div class='form-group'><label>Date Created</label><input type='date' class='form-control' id='txtDateCreated-" + id + "' name='txtDateCreated-" + id + "' /><span class='text-danger' id='txtDateCreated-" + id + "_error'></span></div>";
                     tabContent += "</div>";
 
                     tabContent += "<div class='col-md-3 col-sm-6'>";

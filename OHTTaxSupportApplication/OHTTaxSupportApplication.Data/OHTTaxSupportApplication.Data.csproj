@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201807211750421_update-db.Designer.cs">
       <DependentUpon>201807211750421_update-db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810031839592_AddInvoiceCode.cs" />
+    <Compile Include="Migrations\201810031839592_AddInvoiceCode.Designer.cs">
+      <DependentUpon>201810031839592_AddInvoiceCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OHTTaxSupport_dbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +117,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807211750421_update-db.resx">
       <DependentUpon>201807211750421_update-db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810031839592_AddInvoiceCode.resx">
+      <DependentUpon>201810031839592_AddInvoiceCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

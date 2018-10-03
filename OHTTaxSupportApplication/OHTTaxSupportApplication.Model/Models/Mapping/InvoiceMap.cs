@@ -14,7 +14,8 @@ namespace OHTTaxSupportApplication.Model.Models.Mapping
             // Table & Column Mappings
             this.ToTable("Invoice");
             this.Property(t => t.ID).HasColumnName("ID");
-            this.Property(t => t.CreatedDate).HasColumnName("CreatedDate");
+			this.Property(t => t.InvoiceCode).HasColumnName("InvoiceCode");
+			this.Property(t => t.CreatedDate).HasColumnName("CreatedDate");
             this.Property(t => t.Value).HasColumnName("Value");
             this.Property(t => t.CustomerID).HasColumnName("CustomerID");
             this.Property(t => t.InOut).HasColumnName("InOut");
